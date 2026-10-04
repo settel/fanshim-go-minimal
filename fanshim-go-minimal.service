@@ -1,0 +1,13 @@
+[Unit]
+Description=Fan SHIM driver
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/bin/fanshim-go-minimal
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
