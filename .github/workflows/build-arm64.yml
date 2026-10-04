@@ -1,0 +1,32 @@
+name: Build ARM64 binary
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Build Linux ARM64 binary
+        run: GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o fanshim-go-minimal .
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fanshim-go-minimal-linux-arm64
+          path: fanshim-go-minimal
+          if-no-files-found: error
