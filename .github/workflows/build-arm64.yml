@@ -32,3 +32,4 @@ jobs:
           --title "$GITHUB_REF_NAME"
           --generate-notes
           fanshim-go-minimal
+          fanshim-go-minimal.service
