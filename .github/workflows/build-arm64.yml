@@ -2,8 +2,11 @@ name: Build ARM64 binary
 
 on:
   push:
+    branches:
+      - master
   pull_request:
-  workflow_dispatch:
+    branches:
+      - master
 
 permissions:
   contents: read
@@ -13,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: true
@@ -25,7 +28,7 @@ jobs:
         run: GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o fanshim-go-minimal .
 
       - name: Upload binary artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: fanshim-go-minimal-linux-arm64
           path: fanshim-go-minimal
