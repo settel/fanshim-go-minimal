@@ -12,7 +12,9 @@ Either download and install the binary or compile on your own.
 
 ## Use pre-built binary
 
-tbd.
+Download `fanshim-go-minimal` from the [GitHub Releases](https://github.com/settel/fanshim-go-minimal/releases)
+page. Pushing a tag named `release-<version>` (for example, `release-1.0`)
+builds the Linux ARM64 binary and attaches it to that release.
 
 ## Compile on your own
 
